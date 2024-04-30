@@ -23,7 +23,7 @@ main: NumMonster.o Guess_Your_Luck.o tictactoe.o main.o
 
 # Clean up command
 clean: 
-	rm -f main main.o Guess_Your_Luck.o NumMonster.o tictactoe.o
+	rm -f main main.o Guess_Your_Luck.o NumMonster.o tictactoe.o counting.txt
 
 # Mark 'clean' as a phony target
 .PHONY: clean
