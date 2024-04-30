@@ -41,3 +41,50 @@ int main() {
     cout << endl;
     cout << endl;
     this_thread::sleep_for(chrono::milliseconds(2000));
+
+    cout << "============= Game 3: Tic Tac Toe =============" << endl;
+    this_thread::sleep_for(chrono::milliseconds(2000));
+    playGame();
+    cout << endl;
+    cout << endl;
+    this_thread::sleep_for(chrono::milliseconds(1000));
+    cout << "Let's see the final result!!!" << endl;
+    
+    this_thread::sleep_for(chrono::milliseconds(500));
+    cout << "Loading" << endl;
+    this_thread::sleep_for(chrono::milliseconds(500));
+    cout << "Loading." << endl;
+    this_thread::sleep_for(chrono::milliseconds(500));
+    cout << "Loading.." << endl;
+    this_thread::sleep_for(chrono::milliseconds(500));
+    cout << "Loading..." << endl;
+    this_thread::sleep_for(chrono::milliseconds(1000));
+
+    // Reading results from the file
+    ifstream fin("counting.txt");
+    if (!fin) {
+        cerr << "Error in file opening!" << endl;
+        exit(1);
+    }
+
+    int count1 = 0, count2 = 0;
+    string line;
+    while (getline(fin, line)) {
+        if (line.find("Player 1") != string::npos) {
+            count1++;
+        } else if (line.find("Player 2") != string::npos) {
+            count2++;
+        }
+    }
+
+    if (count1 > count2) {
+        cout << " ██████╗ ██████╗ ███╗   ██╗ ██████╗ ██████╗  █████╗ ████████╗██╗   ██╗██╗      █████╗ ████████╗██╗ ██████╗ ███╗   ██╗\n██╔════╝██╔═══██╗████╗  ██║██╔════╝ ██╔══██╗██╔══██╗╚══██╔══╝██║   ██║██║     ██╔══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║\n██║     ██║   ██║██╔██╗ ██║██║  ███╗██████╔╝███████║   ██║   ██║   ██║██║     ███████║   ██║   ██║██║   ██║██╔██╗ ██║\n██║     ██║   ██║██║╚██╗██║██║   ██║██╔══██╗██╔══██║   ██║   ██║   ██║██║     ██╔══██║   ██║   ██║██║   ██║██║╚██╗██║\n╚██████╗╚██████╔╝██║ ╚████║╚██████╔╝██║  ██║██║  ██║   ██║   ╚██████╔╝███████╗██║  ██║   ██║   ██║╚██████╔╝██║ ╚████║\n ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝" << endl; 
+        cout << player1 << " wins!!!" << endl;
+    } else if (count2 > count1) {
+        cout << " ██████╗ ██████╗ ███╗   ██╗ ██████╗ ██████╗  █████╗ ████████╗██╗   ██╗██╗      █████╗ ████████╗██╗ ██████╗ ███╗   ██╗\n██╔════╝██╔═══██╗████╗  ██║██╔════╝ ██╔══██╗██╔══██╗╚══██╔══╝██║   ██║██║     ██╔══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║\n██║     ██║   ██║██╔██╗ ██║██║  ███╗██████╔╝███████║   ██║   ██║   ██║██║     ███████║   ██║   ██║██║   ██║██╔██╗ ██║\n██║     ██║   ██║██║╚██╗██║██║   ██║██╔══██╗██╔══██║   ██║   ██║   ██║██║     ██╔══██║   ██║   ██║██║   ██║██║╚██╗██║\n╚██████╗╚██████╔╝██║ ╚████║╚██████╔╝██║  ██║██║  ██║   ██║   ╚██████╔╝███████╗██║  ██║   ██║   ██║╚██████╔╝██║ ╚████║\n ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝" << endl; 
+        cout << player2 << " wins!!!" << endl;
+    } else {
+        cout << "It's a tie!" << endl;
+    }
+    return 0;
+}
